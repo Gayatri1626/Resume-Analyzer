@@ -42,6 +42,10 @@ Currently supports analysis for:
 - flask-cors
 - scikit-learn
 
+### Demo
+![image](https://github.com/user-attachments/assets/f7643d4d-737e-45d1-af50-f03f33bfdd6b)
+![image](https://github.com/user-attachments/assets/98ceea8b-2f52-442d-b44a-b7dec49d6643)
+
 ### Installation
 
 1. Clone the repository
