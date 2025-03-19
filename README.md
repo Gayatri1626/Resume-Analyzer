@@ -1,6 +1,4 @@
-Here's a `README.md` file for your **Resume Data Analysis** project:
 
----
 
 # 📄 Resume Data Analysis
 
