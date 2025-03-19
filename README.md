@@ -1,72 +1,56 @@
-# Resume Analyzer 📄🔍
+Here's a `README.md` file for your **Resume Data Analysis** project:
 
-## Project Overview
+---
 
-The Resume Analyzer is an intelligent web application that performs comprehensive analysis of PDF resumes, providing insights into resume quality, job relevance, and skill matching.
+# 📄 Resume Data Analysis
 
-## Features
+## 🚀 **Project Overview**
+The **Resume Data Analysis** project extracts, analyzes, and evaluates resumes in PDF format. It identifies sections, extracts contact information, extracts skills, and calculates quality scores based on experience, education, and skills match with specific job roles. The analysis results are saved to JSON format for easy storage and retrieval.
 
-### 1. Resume Analysis Capabilities
-- Extract key sections from resume
-- Analyze resume quality metrics
-- Calculate job-specific relevance scores
-- Identify skills and action verbs
-- Support for multiple job titles
+---
 
-### 2. Job Title Support
-Currently supports analysis for:
-- Data Scientist
-- AI Engineer
-- Software Developer
+## 📚 **Features**
 
-## Tech Stack
+✅ Extracts text from PDF resumes  
+✅ Identifies and extracts key sections: `Contact`, `Summary`, `Experience`, `Education`, `Skills`, etc.  
+✅ Extracts action verbs using **WordNet** and **NLTK**  
+✅ Calculates quality scores:
+- **Skill match score:** Matches resume skills with job-specific skills  
+- **Experience score:** Analyzes years and months of experience  
+- **Education score:** Evaluates the degree and relevant fields  
+✅ Saves analysis results to a JSON file with a timestamp  
+✅ Supports multiple job profiles: `Data Scientist`, `AI Engineer`, `Software Developer`  
 
-- **Backend**: Python
-  - PyPDF2 for PDF text extraction
-  - SpaCy for natural language processing
-  - NLTK for linguistic processing
-  - Scikit-learn for text analysis
+---
 
-- **Web Framework**: Flask
-- **Frontend**: HTML, Bootstrap, JavaScript
-- **Data Processing**: Pandas, NumPy
+## 🛠️ **Tech Stack**
 
-## Prerequisites
+- **Python Libraries:**  
+  - `PyPDF2` → PDF extraction  
+  - `spaCy` → NLP processing  
+  - `NLTK` → Natural language processing (WordNet and POS tagging)  
+  - `sklearn` → TF-IDF vectorizer for text analysis  
+  - `datetime` → Timestamp for saving analysis results  
+- **File Format:**  
+  - PDF input files  
+  - JSON output files  
 
-### Python Dependencies
-- PyPDF2
-- spacy
-- en_core_web_sm
-- nltk
-- flask
-- flask-cors
-- scikit-learn
+---
 
-### Demo
-![image](https://github.com/user-attachments/assets/f7643d4d-737e-45d1-af50-f03f33bfdd6b)
-![image](https://github.com/user-attachments/assets/98ceea8b-2f52-442d-b44a-b7dec49d6643)
+## 🔥 **Installation**
 
-### Installation
-
-1. Clone the repository
+1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/resume-analyzer.git
-cd resume-analyzer
+git clone <repository_url>
+cd resume-data-analysis
 ```
 
-2. Create a virtual environment
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-```
-
-3. Install dependencies
+2. **Install Dependencies**
 ```bash
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
 ```
 
-4. Download NLTK resources
+3. **Download NLTK Resources**
 ```python
 import nltk
 nltk.download('wordnet')
@@ -74,64 +58,104 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('stopwords')
 ```
 
-## Running the Application
+---
 
+## 📊 **Usage**
+
+1. **Run the Script**
 ```bash
-python app.py
+python resume_analyzer.py
 ```
 
-Navigate to `http://localhost:5000` in your web browser.
+2. **Input PDF Resume**
+- Place the PDF file in the working directory
+- Update the PDF file path in the script:
+```python
+pdf_path = "path/to/resume.pdf"
+```
 
-## How It Works
+3. **Output**
+- The extracted sections, skills, and scores will be saved as a JSON file:
+```json
+{
+  "timestamp": "2025-03-19T12:45:32",
+  "analysis": {
+    "sections": {
+      "CONTACT": "John Doe\njohn.doe@email.com\n+1-234-567-890",
+      "EXPERIENCE": "...",
+      "SKILLS": "Python, SQL, Data Analysis"
+    },
+    "skill_match_score": 35.0,
+    "experience_score": 25.0,
+    "education_score": 30.0
+  }
+}
+```
 
-### Resume Analysis Process
-1. PDF text extraction
-2. Text preprocessing
-3. Section identification
-4. Skill matching
-5. Quality metric calculation
-6. Job relevance scoring
+---
 
-### Scoring Mechanism
-- **Skill Match**: 40 points
-- **Experience**: Up to 30 points
-- **Education**: Up to 30 points
-- **Total Possible Score**: 100 points
+## ✅ **Scoring Criteria**
 
-## Configuration
+- **Skill Match Score:**  
+  - Compares extracted skills with job-specific skills  
+  - Max score: **40 points**
 
-- Modify `job_skills` in `data.py` to add or update job-specific skills
-- Customize scoring weights in scoring methods
+- **Experience Score:**  
+  - Based on experience duration (years and months)  
+  - Max score: **30 points**
 
-## Security Features
-- File type validation
-- Maximum file size limit
-- Secure file handling
-- Temporary file deletion
+- **Education Score:**  
+  - Degree level and relevant fields  
+  - Max score: **30 points**
 
-## Limitations
-- Works best with well-structured, text-based PDFs
-- Job title must be predefined
-- Limited to English language resumes
+---
 
-## Future Enhancements
-- Add more job titles
-- Improve NLP accuracy
-- Implement advanced skill recognition
-- Create more detailed scoring mechanisms
+## 🛠️ **Customization**
 
-## Troubleshooting
-- Ensure all dependencies are installed
-- Check PDF formatting
-- Verify file permissions
+- **Add new job profiles**
+  - Edit the `self.job_skills` dictionary in the `ResumeAnalyzer` class:
+```python
+self.job_skills = {
+    'data_scientist': ['python', 'sql', 'machine learning'],
+    'ai_engineer': ['tensorflow', 'pytorch', 'nlp'],
+    'software_developer': ['java', 'aws', 'docker']
+}
+```
 
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a pull request
+- **Update Section Patterns**
+  - Modify `self.section_patterns` to add or customize section names.
 
-## Contact
-gayatrighorpade409@gmail.com
-9623520301
+---
+
+## ⚙️ **Directory Structure**
+```
+/resume-data-analysis  
+ ├── resume_analyzer.py        # Main script  
+ ├── requirements.txt          # Dependencies  
+ ├── sample_resume.pdf         # Sample PDF resume  
+ ├── output.json               # Analysis result in JSON  
+ ├── README.md                 # Documentation  
+```
+
+---
+
+## 📌 **To-Do List**
+
+- [ ] Improve NLP accuracy for section extraction  
+- [ ] Add support for more job profiles  
+- [ ] Integrate visualizations (matplotlib) for resume scoring  
+- [ ] Add functionality to compare multiple resumes  
+
+---
+
+## 📝 **License**
+This project is licensed under the MIT License.  
+
+---
+
+## ✨ **Contributors**
+- [Gayatri Ghorpade](https://github.com/your-github-profile)  
+
+---
+
+✅ **Feel free to contribute and improve this project!**
